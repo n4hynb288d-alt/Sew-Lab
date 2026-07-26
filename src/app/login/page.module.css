@@ -1,0 +1,55 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--surface-dark);
+  color: #f2f2f2;
+}
+
+.card {
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
+}
+
+.eyebrow {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 12px;
+}
+
+.title {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 400;
+  font-size: 48px;
+  margin: 0 0 16px;
+}
+
+.body {
+  font-size: 15px;
+  line-height: 1.6;
+  color: color-mix(in srgb, #fff 70%, transparent);
+  margin: 0 0 28px;
+}
+
+.back {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid color-mix(in srgb, #fff 30%, transparent);
+  padding: 12px 20px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .back:hover {
+    border-color: #fff;
+  }
+}

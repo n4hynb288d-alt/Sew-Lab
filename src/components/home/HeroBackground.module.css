@@ -1,0 +1,24 @@
+.background {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  background: var(--surface-dark);
+}
+
+.media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* This is landscape footage inside a tall, narrow mobile viewport — cover
+   would crop out ~75% of the frame's width to fill the height, reading as
+   way too zoomed in. contain shows the whole frame instead; the dark
+   surface color (already set on .background above) fills the letterbox
+   gaps cleanly rather than leaving anything blank-looking. */
+@media (max-width: 640px) {
+  .media {
+    object-fit: contain;
+  }
+}

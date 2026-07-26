@@ -1,0 +1,90 @@
+.stage {
+  display: inline-block;
+  perspective: 1200px;
+  margin-bottom: 28px;
+}
+
+.cube {
+  position: relative;
+  transform-style: preserve-3d;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 400;
+  font-size: clamp(40px, 6vw, 68px);
+  letter-spacing: 0.05em;
+  line-height: 1;
+  white-space: nowrap;
+  /* Adjust rotation speed here — lower is faster. */
+  --spin-duration: 22.5s;
+  animation: spin3d var(--spin-duration) linear infinite;
+}
+
+@keyframes spin3d {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    /* Negative = counter-clockwise. */
+    transform: rotateY(-360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cube {
+    animation: none;
+    transform: rotateY(-22deg);
+  }
+}
+
+.sizer {
+  visibility: hidden;
+  display: block;
+}
+
+.slice,
+.face,
+.back {
+  position: absolute;
+  inset: 0;
+  display: block;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.slice {
+  pointer-events: none;
+}
+
+.face,
+.backInner {
+  background: linear-gradient(
+    100deg,
+    #7d8085 0%,
+    #ffffff 18%,
+    #b8bbc0 36%,
+    #6b6e72 52%,
+    #ffffff 70%,
+    #9a9da1 86%,
+    #ffffff 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6), 0 -1px 1px rgba(0, 0, 0, 0.35), 0 2px 2px rgba(0, 0, 0, 0.25),
+    0 6px 10px rgba(0, 0, 0, 0.35);
+}
+
+.backInner {
+  display: block;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

@@ -1,0 +1,49 @@
+/* Desktop never sees this — only exists at the mobile breakpoint, mirroring
+   how Hero.module.css hides the desktop hero there. */
+.landing {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .landing {
+    display: block;
+    position: relative;
+    /* Sticky header is ~75px — without subtracting it, this section runs
+       75px taller than the viewport and pushes the swipe hint below the
+       fold on first load. */
+    height: calc(100vh - 75px);
+    height: calc(100svh - 75px);
+    overflow: hidden;
+    scroll-snap-align: start;
+  }
+}
+
+.logoOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* 25% larger than Logo3D's own default size, then bumped another 15% per
+   follow-up feedback (1.25 -> 1.44) — scoped to this mobile-only context
+   via a wrapper transform, rather than changing Logo3D itself (which the
+   desktop hero also uses at its own tuned size). */
+.logoScale {
+  transform: scale(1.44);
+}
+
+.swipeHint {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, #fff 75%, transparent);
+  margin: 0;
+}

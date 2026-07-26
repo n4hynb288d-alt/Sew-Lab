@@ -1,0 +1,77 @@
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 24px;
+  background: color-mix(in srgb, var(--background) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.navMark {
+  font-family: var(--font-display), sans-serif;
+  font-size: 24px;
+  letter-spacing: 0.08em;
+}
+
+.navLinks {
+  display: none;
+  gap: 28px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 860px) {
+  .navLinks {
+    display: flex;
+  }
+}
+
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navLogin {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 10px 14px;
+  color: color-mix(in srgb, var(--foreground) 70%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .navLogin:hover {
+    color: var(--foreground);
+    border-color: var(--foreground);
+  }
+}
+
+.navCta {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 10px 16px;
+  border: 1px solid var(--foreground);
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .navCta:hover {
+    background: var(--foreground);
+    color: var(--background);
+  }
+}

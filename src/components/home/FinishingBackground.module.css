@@ -1,0 +1,60 @@
+.background {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  background: var(--surface-dark);
+}
+
+/* On mobile, MobileGridBackdrop (the same persistent grid from the landing)
+   takes over as this section's background instead — see
+   FinishingFeature.tsx. */
+@media (max-width: 640px) {
+  .background {
+    display: none;
+  }
+}
+
+.media {
+  object-fit: cover;
+  object-position: 50% 50%;
+  /* Color grade — matches the other full-bleed sections so the whole set
+     feels like one consistent system. */
+  filter: contrast(1.18) saturate(0.78) brightness(0.88);
+}
+
+/* On a tall, narrow mobile viewport, cover forces a much bigger crop than
+   on desktop — contain shows the whole frame instead, with the dark
+   surface color (set on .background above) filling any letterbox gaps
+   cleanly rather than leaving anything blank-looking. */
+@media (max-width: 640px) {
+  .media {
+    object-fit: contain;
+  }
+}
+
+/* Masking — same recipe as Screen Printing/DTF's: copy panel sits on the
+   LEFT here, so the horizontal tint and accent glow land on the left too,
+   layered with the same vertical vignette. */
+.mask {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 65% 55% at 22% 92%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%),
+    linear-gradient(
+      180deg,
+      rgba(9, 6, 4, 0.5) 0%,
+      rgba(9, 6, 4, 0.2) 25%,
+      rgba(9, 6, 4, 0.32) 75%,
+      rgba(9, 6, 4, 0.68) 100%
+    ),
+    linear-gradient(
+      100deg,
+      rgba(9, 6, 4, 0.92) 0%,
+      rgba(9, 6, 4, 0.74) 32%,
+      rgba(9, 6, 4, 0.48) 58%,
+      rgba(9, 6, 4, 0.3) 100%
+    );
+  pointer-events: none;
+}

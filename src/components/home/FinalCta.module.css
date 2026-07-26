@@ -1,0 +1,29 @@
+.inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sub {
+  color: color-mix(in srgb, #fff 65%, transparent);
+  margin: 0 auto 32px;
+  max-width: 480px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.phone {
+  display: inline-block;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(32px, 6vw, 56px);
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.15s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .phone:hover {
+    border-color: var(--accent);
+  }
+}

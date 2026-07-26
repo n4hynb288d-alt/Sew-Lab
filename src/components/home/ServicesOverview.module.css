@@ -1,0 +1,64 @@
+/* Removed from mobile entirely — the swipe sequence goes straight from the
+   landing grid into Screen Printing instead of pausing on this summary
+   first. Targeted by ID (not the shared section class) so it doesn't affect
+   ClientCredibility/WorkGallery, which use the same shared styles. */
+@media (max-width: 640px) {
+  /* :global — CSS Modules scopes/hashes plain ID selectors the same as
+     classes, which would never match the real id="services" in the DOM. */
+  :global(#services) {
+    display: none;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: var(--surface);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+}
+
+.code {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+
+.name {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.desc {
+  font-size: 13px;
+  color: color-mix(in srgb, var(--foreground) 60%, transparent);
+}

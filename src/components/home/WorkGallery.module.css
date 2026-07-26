@@ -1,0 +1,29 @@
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.item {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--surface);
+}
+
+.item :global(img) {
+  object-fit: cover;
+}
+
+@media (min-width: 720px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .item:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+    aspect-ratio: auto;
+  }
+}

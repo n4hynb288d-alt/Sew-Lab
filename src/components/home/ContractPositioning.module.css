@@ -1,0 +1,27 @@
+.copy {
+  font-size: 17px;
+  line-height: 1.7;
+  color: color-mix(in srgb, #fff 78%, transparent);
+  max-width: 640px;
+  margin: 0 0 40px;
+}
+
+.tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tags li {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border: 1px solid color-mix(in srgb, #fff 22%, transparent);
+  border-radius: 2px;
+  color: color-mix(in srgb, #fff 85%, transparent);
+}

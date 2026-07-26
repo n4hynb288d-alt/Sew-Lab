@@ -1,0 +1,66 @@
+.background {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  background: var(--surface-dark);
+}
+
+/* On mobile, MobileGridBackdrop (the same persistent grid from the landing)
+   takes over as this section's background instead — see
+   ScreenPrintingFeature.tsx. */
+@media (max-width: 640px) {
+  .background {
+    display: none;
+  }
+}
+
+.media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 42%;
+  /* Color grade — the raw footage runs a bit muddy/flat on its own;
+     trimming saturation and lifting contrast while dimming brightness
+     slightly makes it read as an intentionally graded backdrop rather
+     than a straight clip dropped in. */
+  filter: contrast(1.18) saturate(0.78) brightness(0.88);
+}
+
+/* On a tall, narrow mobile viewport, cover forces a much bigger crop than
+   on desktop — contain shows the whole frame instead, with the dark
+   surface color (set on .background above) filling any letterbox gaps
+   cleanly rather than leaving anything blank-looking. */
+@media (max-width: 640px) {
+  .media {
+    object-fit: contain;
+  }
+}
+
+/* Masking — a horizontal tint (stronger where the copy sits, on the left)
+   layered with a vertical vignette (slightly darker at the top and bottom
+   edges) so the footage reads as a moody, unified backdrop rather than a
+   sharp light/dark split, plus a faint warm glow tied to the brand accent
+   so the tint feels designed rather than just "darkened." */
+.mask {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 65% 55% at 22% 92%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%),
+    linear-gradient(
+      180deg,
+      rgba(9, 6, 4, 0.5) 0%,
+      rgba(9, 6, 4, 0.2) 25%,
+      rgba(9, 6, 4, 0.32) 75%,
+      rgba(9, 6, 4, 0.68) 100%
+    ),
+    linear-gradient(
+      100deg,
+      rgba(9, 6, 4, 0.92) 0%,
+      rgba(9, 6, 4, 0.74) 32%,
+      rgba(9, 6, 4, 0.48) 58%,
+      rgba(9, 6, 4, 0.3) 100%
+    );
+  pointer-events: none;
+}

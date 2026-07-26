@@ -1,0 +1,53 @@
+/* Shared building blocks reused across every homepage section — keeps
+   spacing/typography consistent without copy-pasting the same rules into
+   each section's own CSS module. */
+
+.section {
+  padding: 96px 24px;
+  background: var(--background);
+}
+
+.sectionAlt {
+  padding: 96px 24px;
+  background: var(--surface);
+}
+
+.sectionDark {
+  padding: 96px 24px;
+  background: var(--surface-dark);
+  color: #f2f2f2;
+}
+
+.inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.eyebrowTag {
+  display: inline-block;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin: 0 0 12px;
+}
+
+.title {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 400;
+  font-size: clamp(32px, 5vw, 48px);
+  letter-spacing: 0.01em;
+  margin: 0 0 8px;
+}
+
+.sub {
+  font-size: 16px;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--foreground) 62%, transparent);
+  margin: 0 0 48px;
+  max-width: 640px;
+}
+
+.sectionDark .sub {
+  color: color-mix(in srgb, #fff 65%, transparent);
+}
