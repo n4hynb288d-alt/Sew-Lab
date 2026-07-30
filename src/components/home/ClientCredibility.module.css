@@ -6,19 +6,21 @@
 }
 
 .logo {
-  position: relative;
   width: 140px;
   height: 56px;
-  filter: grayscale(1) opacity(0.6);
-  transition: filter 0.15s ease;
-}
-
-.logo :global(img) {
-  object-fit: contain;
+  background-color: var(--accent);
+  opacity: 0.85;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  transition: opacity 0.15s ease;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .logo:hover {
-    filter: grayscale(0) opacity(1);
+    opacity: 1;
   }
 }

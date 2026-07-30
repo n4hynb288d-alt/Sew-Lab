@@ -1,12 +1,11 @@
-import Image from "next/image";
 import shared from "./shared.module.css";
 import styles from "./ClientCredibility.module.css";
 
 const CLIENTS = [
-  { src: "/logos/clients/nike.png", alt: "Nike" },
-  { src: "/logos/clients/adidas.jpg", alt: "Adidas" },
-  { src: "/logos/clients/sony-music.jpg", alt: "Sony Music" },
-  { src: "/logos/clients/netflix.webp", alt: "Netflix" },
+  { mask: "/logos/clients/nike.png", alt: "Nike" },
+  { mask: "/logos/clients/adidas-mask.png", alt: "Adidas" },
+  { mask: "/logos/clients/sony-music-mask.png", alt: "Sony Music" },
+  { mask: "/logos/clients/netflix-mask.png", alt: "Netflix" },
 ] as const;
 
 export default function ClientCredibility() {
@@ -18,9 +17,13 @@ export default function ClientCredibility() {
         <p className={shared.sub}>Production for brands, labels, and platforms that don&apos;t get second chances on quality.</p>
         <div className={styles.row}>
           {CLIENTS.map((c) => (
-            <div key={c.src} className={styles.logo}>
-              <Image src={c.src} alt={c.alt} fill sizes="200px" />
-            </div>
+            <div
+              key={c.mask}
+              className={styles.logo}
+              role="img"
+              aria-label={c.alt}
+              style={{ WebkitMaskImage: `url(${c.mask})`, maskImage: `url(${c.mask})` }}
+            />
           ))}
         </div>
       </div>
