@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "./ComingSoonBackdrop.module.css";
 
-const SCREEN_PRINT_VIDEO = "/videos/print-shop-loop.mp4";
-const HERO_VIDEO = "/videos/hero-production.mp4";
+const SCREEN_PRINT_VIDEO = "/videos/screen-print-production.mp4";
+const HERO_VIDEO = "/videos/embroidery-heads.mp4";
 const EMBROIDERY_IMAGE = {
   src: "/images/production/09AAD566-94C2-4749-B427-D9401D18D504.JPG",
   alt: "Embroidery machine head stitching a logo in real time",
