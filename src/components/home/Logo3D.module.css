@@ -78,6 +78,104 @@
   display: block;
 }
 
+/* Flash variant: two flat chrome-text layers dissolving in and out in
+   sequence, rather than the spin variant's rotating 3D extrusion. One full
+   loop is 4 phases of 3.75s each — SEW-LAB dissolves away, COMING-SOON
+   dissolves in, COMING-SOON dissolves away, SEW-LAB dissolves in — so only
+   one word is ever transitioning at a time, never both crossfading at once. */
+.flashStage {
+  display: inline-block;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 400;
+  font-size: clamp(40px, 6vw, 68px);
+  letter-spacing: 0.05em;
+  line-height: 1;
+  white-space: nowrap;
+  margin-bottom: 28px;
+}
+
+.flashCube {
+  position: relative;
+}
+
+.flashSizer {
+  visibility: hidden;
+  display: block;
+  text-align: center;
+}
+
+.flashText {
+  position: absolute;
+  inset: 0;
+  display: block;
+  text-align: center;
+  will-change: opacity, filter, transform;
+}
+
+.flashFront {
+  animation: flashFront 15s ease-in-out infinite;
+}
+
+.flashBack {
+  animation: flashBack 15s ease-in-out infinite;
+}
+
+@keyframes flashFront {
+  0% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+  25% {
+    opacity: 0;
+    filter: blur(5px);
+    transform: scale(1.05);
+  }
+  75% {
+    opacity: 0;
+    filter: blur(5px);
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+}
+
+@keyframes flashBack {
+  0%,
+  25% {
+    opacity: 0;
+    filter: blur(5px);
+    transform: scale(1.05);
+  }
+  50% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+  75%,
+  100% {
+    opacity: 0;
+    filter: blur(5px);
+    transform: scale(1.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flashFront {
+    animation: none;
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+  .flashBack {
+    animation: none;
+    opacity: 0;
+  }
+}
+
 .srOnly {
   position: absolute;
   width: 1px;

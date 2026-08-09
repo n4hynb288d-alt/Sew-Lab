@@ -11,7 +11,7 @@ export default function ComingSoon() {
       <ComingSoonBackdrop />
       <div className={styles.logoOverlay}>
         <div className={styles.logoScale}>
-          <Logo3D backText="COMING-SOON" />
+          <Logo3D backText="COMING-SOON" variant="flash" />
         </div>
       </div>
     </section>

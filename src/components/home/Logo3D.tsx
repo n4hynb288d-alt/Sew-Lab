@@ -22,11 +22,30 @@ const depths = Array.from({ length: SLICE_COUNT }, (_, i) => {
   return -CAP_Z + t * CAP_Z * 2;
 });
 
-export default function Logo3D({ backText = FRONT_TEXT }: { backText?: string }) {
+export default function Logo3D({
+  backText = FRONT_TEXT,
+  variant = "spin",
+}: {
+  backText?: string;
+  variant?: "spin" | "flash";
+}) {
   // The rotating box has one shared width for both faces (see .sizer in the
   // CSS module) — sized to whichever text is longer so a shorter word on
   // either face just sits centered in it rather than overflowing.
   const sizerText = backText.length > FRONT_TEXT.length ? backText : FRONT_TEXT;
+
+  if (variant === "flash") {
+    return (
+      <div className={styles.flashStage}>
+        <div className={styles.flashCube} aria-hidden="true">
+          <span className={styles.flashSizer}>{sizerText}</span>
+          <span className={`${styles.flashText} ${styles.face} ${styles.flashFront}`}>{FRONT_TEXT}</span>
+          <span className={`${styles.flashText} ${styles.face} ${styles.flashBack}`}>{backText}</span>
+        </div>
+        <span className={styles.srOnly}>{FRONT_TEXT}</span>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.stage}>
