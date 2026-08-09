@@ -1,0 +1,70 @@
+/* Fills whatever positioned ancestor it's placed in (the Hero section) —
+   only ever shown at the desktop breakpoint; Hero itself hides below 640px
+   in favor of the mobile landing's own 4-tile grid.
+   No z-index here on purpose: this is the first child in Hero.tsx, so plain
+   DOM order already stacks it behind heroContent/slogan. A negative z-index
+   was used previously, but that made real pointer/hover hit-testing resolve
+   to the parent <section> instead of descending into the tiles — the mask
+   still painted correctly, but :hover on a tile never actually triggered. */
+.grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  overflow: hidden;
+  background: var(--surface-dark);
+}
+
+.tile {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface-dark);
+}
+
+.media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Finishing.JPG is landscape (2080x1170) with the felt patch positioned
+   right-of-center in the frame — shifting the anchor keeps it in view
+   instead of cover's default 50%/50% crop cutting it off. */
+.finishingPosition {
+  object-position: 75% 45%;
+}
+
+.placeholder {
+  position: absolute;
+  inset: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px;
+  border: 1px dashed color-mix(in srgb, #fff 25%, transparent);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, #fff 55%, transparent);
+}
+
+/* Per-tile mask — several successive increases from the initial 10% pass
+   per feedback. Lifts on hover (see .tile:hover below) to reveal the raw
+   video/photo underneath, and returns when the mouse moves off. */
+.tileMask {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(6, 5, 4, 0.24), rgba(6, 5, 4, 0.14));
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tile:hover .tileMask {
+    opacity: 0;
+  }
+}

@@ -1,12 +1,11 @@
-import HeroBackground from "./HeroBackground";
+import HeroGrid from "./HeroGrid";
 import Logo3D from "./Logo3D";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
   return (
     <section className={styles.hero}>
-      <HeroBackground />
-      <div className={styles.heroScrim} />
+      <HeroGrid />
       <div className={styles.heroContent}>
         <Logo3D />
         <p className={styles.eyebrow}>Full-Package Apparel Decoration</p>

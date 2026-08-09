@@ -1,26 +1,72 @@
+/* Pins this section to the light theme regardless of the device's OS
+   dark-mode preference. The client logos (Nike, Adidas, Three Ten, etc.)
+   are dark marks meant to sit on a light background — in dark mode the
+   shared --background/--foreground vars flip to near-black/white and the
+   logos become nearly invisible against it. Higher specificity than
+   shared.section's bare .section rule (element + class beats class alone),
+   so this wins regardless of stylesheet order. */
+section.forceLight {
+  --background: #f7f7f8;
+  --foreground: #171717;
+  --accent: #c2410c;
+  /* .title has no color of its own, so it normally inherits body's computed
+     color — which is resolved using body's (dark-mode) --foreground, not
+     this section's override, since inheritance passes computed values, not
+     live variable references. Setting color here explicitly re-resolves it
+     against the local override so .title inherits the right value. */
+  color: var(--foreground);
+}
+
 .row {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 48px;
+  /* Centered so a wrapped last row (an odd one or two logos) reads as a
+     balanced group instead of stranded under the left edge. */
+  justify-content: center;
+  column-gap: 56px;
+  row-gap: 32px;
+}
+
+/* Portrait phones only — landscape mobile and up fall through to the flex
+   row above and read identically to desktop. Flex-wrap wrapped these 6
+   varied-width logos raggedly (2 / 3 / 1); a fixed 2-column grid instead
+   gives three clean, evenly balanced rows. */
+@media (max-width: 640px) {
+  .row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    align-items: center;
+    column-gap: 20px;
+    row-gap: 36px;
+  }
 }
 
 .logo {
-  width: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Height + width caps together (not height alone) — some logos here are
+     wordmarks (Three Ten, Adidas) and some are single-glyph marks (Netflix),
+     an ~11x spread in aspect ratio. Height-only matching let the wordmarks
+     tower over everything else; capping width too keeps every logo inside
+     the same footprint so the row reads as one consistent set. */
   height: 56px;
-  background-color: var(--accent);
-  opacity: 0.85;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  transition: opacity 0.15s ease;
+  max-width: 150px;
+  filter: grayscale(1) opacity(0.6);
+  transition: filter 0.15s ease;
+}
+
+.logo :global(img) {
+  max-height: 100%;
+  max-width: 100%;
+  height: auto;
+  width: auto;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .logo:hover {
-    opacity: 1;
+    filter: grayscale(0) opacity(1);
   }
 }

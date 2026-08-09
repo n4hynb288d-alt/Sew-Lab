@@ -12,18 +12,64 @@
   line-height: 1.6;
 }
 
-.phone {
+.options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.optionLabel {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, #fff 55%, transparent);
+  margin: 0;
+}
+
+.divider {
+  width: 1px;
+  height: 56px;
+  background: color-mix(in srgb, #fff 20%, transparent);
+}
+
+.contact {
   display: inline-block;
   font-family: var(--font-display), sans-serif;
-  font-size: clamp(32px, 6vw, 56px);
+  font-size: clamp(22px, 4.2vw, 40px);
   letter-spacing: 0.02em;
   color: var(--accent);
   border-bottom: 2px solid transparent;
   transition: border-color 0.15s ease;
+  white-space: nowrap;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .phone:hover {
+  .contact:hover {
     border-color: var(--accent);
+  }
+}
+
+@media (max-width: 640px) {
+  .options {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .divider {
+    width: 40px;
+    height: 1px;
+  }
+
+  .contact {
+    white-space: normal;
   }
 }

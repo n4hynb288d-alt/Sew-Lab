@@ -46,7 +46,6 @@
   position: absolute;
   inset: 0;
   display: block;
-  text-align: center;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }

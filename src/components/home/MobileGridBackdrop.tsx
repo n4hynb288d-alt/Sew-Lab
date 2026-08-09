@@ -4,8 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "./MobileGridBackdrop.module.css";
 
-const SCREEN_PRINT_VIDEO = "/videos/print-shop-loop.mp4";
-const HERO_VIDEO = "/videos/hero-production.mp4";
+const SCREEN_PRINT_VIDEO = "/videos/img-9805.mp4";
+// Same clip the desktop Embroidery section uses.
+const EMBROIDERY_VIDEO = "/videos/services/embroidery.mp4";
 const EMBROIDERY_IMAGE = {
   src: "/images/production/09AAD566-94C2-4749-B427-D9401D18D504.JPG",
   alt: "Embroidery machine head stitching a logo in real time",
@@ -23,16 +24,16 @@ const FINISHING_IMAGE = {
 export default function MobileGridBackdrop() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const spVideoRef = useRef<HTMLVideoElement | null>(null);
-  const heroVideoRef = useRef<HTMLVideoElement | null>(null);
+  const embroideryVideoRef = useRef<HTMLVideoElement | null>(null);
   const [spFailed, setSpFailed] = useState(false);
-  const [heroFailed, setHeroFailed] = useState(false);
+  const [embroideryVideoFailed, setEmbroideryVideoFailed] = useState(false);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        for (const video of [spVideoRef.current, heroVideoRef.current]) {
+        for (const video of [spVideoRef.current, embroideryVideoRef.current]) {
           if (!video) continue;
           if (entry.isIntersecting) {
             void video.play().catch(() => {});
@@ -95,18 +96,18 @@ export default function MobileGridBackdrop() {
       </div>
 
       <div className={styles.tile}>
-        {!heroFailed ? (
+        {!embroideryVideoFailed ? (
           <video
             ref={(video) => {
-              heroVideoRef.current = video;
+              embroideryVideoRef.current = video;
               if (!video) return;
-              const onError = () => setHeroFailed(true);
+              const onError = () => setEmbroideryVideoFailed(true);
               video.addEventListener("error", onError);
-              if (video.error) setHeroFailed(true);
+              if (video.error) setEmbroideryVideoFailed(true);
               return () => video.removeEventListener("error", onError);
             }}
             className={styles.media}
-            src={HERO_VIDEO}
+            src={EMBROIDERY_VIDEO}
             muted
             loop
             playsInline
@@ -114,12 +115,10 @@ export default function MobileGridBackdrop() {
           />
         ) : (
           <div className={styles.placeholder}>
-            <span>HERO — Video Placeholder</span>
+            <span>EMB — Video Placeholder</span>
           </div>
         )}
       </div>
-
-      <div className={styles.mask} />
     </div>
   );
 }

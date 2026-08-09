@@ -1,3 +1,23 @@
+/* Scroll box — same grid layout/sizing as before, just capped to a fixed
+   height so a growing photo set scrolls inside it instead of stretching
+   the whole page taller. */
+.galleryScroll {
+  max-height: 640px;
+  overflow-y: auto;
+  padding-right: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--foreground) 30%, transparent) transparent;
+}
+
+.galleryScroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.galleryScroll::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--foreground) 30%, transparent);
+  border-radius: 3px;
+}
+
 .gallery {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

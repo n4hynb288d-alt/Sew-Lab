@@ -9,12 +9,12 @@ const ITEMS = [
   {
     src: "/images/applications/0DE04229-8B2E-4945-9F34-CFEE2D5800D7.JPG",
     alt: "Black snapback with a bold flat-stitched 'Thrasher Magazine' logo on a mannequin head, thread wall in the background",
-    label: "Flat Embroidery",
+    label: "jump-stitch",
   },
   {
     src: "/images/applications/2ECA7121-F059-47A6-B455-94706F234191.JPG",
     alt: "Close-up of a raised 3D puff embroidered patch reading 'American Hot Rod Corporation' on a black cap",
-    label: "3D Puff Embroidery",
+    label: "3D Lettering",
   },
   {
     src: "/images/applications/82004865-D972-421F-8755-54A8273A99EF.jpg",
@@ -24,7 +24,7 @@ const ITEMS = [
   {
     src: "/images/applications/5A73FDC1-7285-4DFF-92BD-7C6C9751CA68.jpg",
     alt: "Black cap with a densely stitched multi-color alien-and-flames patch",
-    label: "Dense Fill Stitch",
+    label: "Fill-Stitch",
   },
   {
     src: "/images/applications/IMG_7361.jpeg",
@@ -39,32 +39,32 @@ const ITEMS = [
   {
     src: "/images/applications/70068594720__9EEBF301-5721-49F9-8481-306F0CC87C4A.jpeg",
     alt: "White, gold, and red trucker caps with a tackle-twill 'SF' logo and matching script lettering",
-    label: "Script Lettering + Twill",
+    label: "3D Embroidery + Embroidery over side panel",
   },
   {
     src: "/images/applications/88895E3E-7A8A-4E88-9EF0-B972571CDCB7.JPG",
     alt: "Large tackle-twill 'Mirrored End' lettering with satin-stitch borders across the back of a black jacket",
-    label: "Tackle Twill Lettering",
+    label: "Tackle-Twill Applique",
   },
   {
     src: "/images/applications/DBE1686B-FF32-4CAC-8904-81EEF9259FE7.JPG",
     alt: "Close-up of a felt chenille letter appliqué with satin-stitch edging on a navy wool cap",
-    label: "Chenille Felt Appliqué",
+    label: "Felt Patch Applique",
   },
   {
     src: "/images/applications/E3C449B7-7875-49AF-A489-613FAF6852D4.jpg",
     alt: "Three trucker caps in tan, blue, and black, each with the same full-color photo-realistic eagle embroidery",
-    label: "Photo-Realistic Embroidery",
+    label: "DTF",
   },
   {
     src: "/images/applications/IMG_1183.JPG",
     alt: "Tone-on-tone 'Achille Apparel' lettering embroidered vertically on a white jacket panel",
-    label: "Tone-on-Tone Lettering",
+    label: "Tonal Logo",
   },
   {
     src: "/images/applications/IMG_1184.JPG",
     alt: "Oversized lightning-bolt logo patch embroidered across the back of a black hoodie",
-    label: "Oversized Back Patch",
+    label: "Applique Cotton Twill",
   },
   {
     src: "/images/applications/IMG_7358.jpeg",
@@ -74,12 +74,12 @@ const ITEMS = [
   {
     src: "/images/applications/IMG_7360.jpeg",
     alt: "Black cap with 'Thrasher' script embroidered above the back strap closure",
-    label: "Back Strap Placement",
+    label: "Back Logo Placement",
   },
   {
     src: "/images/applications/IMG_7362.jpeg",
     alt: "Grey beanie with a fine-line outline-stitched sun face design on the cuff",
-    label: "Fine-Line Outline Stitch",
+    label: "Embroidery onto Beanie",
   },
 ] as const;
 

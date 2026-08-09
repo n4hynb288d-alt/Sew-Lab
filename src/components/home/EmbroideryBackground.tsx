@@ -13,8 +13,7 @@ const FALLBACK_IMAGE = {
 // Same fluid-fill approach as the hero/screen-printing sections: absolutely
 // positioned, full-bleed, object-fit: cover — the video always fills the
 // section and rescales with it (window resize, mobile vs. desktop) with no
-// distortion and no JS required for the scaling itself. No embroidery video
-// exists yet, so this currently always falls back to the production photo.
+// distortion and no JS required for the scaling itself.
 export default function EmbroideryBackground() {
   const [videoFailed, setVideoFailed] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);

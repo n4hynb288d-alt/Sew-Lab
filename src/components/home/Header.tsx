@@ -9,9 +9,11 @@ export default function Header() {
       </Link>
       <nav className={styles.navLinks}>
         <a href="#services">Capabilities</a>
-        <a href="#work">Work</a>
         <a href="#clients">Clients</a>
         <a href="#contact">Contact</a>
+        <a href="https://moxy-eight.vercel.app/" target="_blank" rel="noopener noreferrer">
+          Mock-Ups
+        </a>
       </nav>
       <div className={styles.navActions}>
         {/* Visual placeholder only — no auth wired up yet. */}

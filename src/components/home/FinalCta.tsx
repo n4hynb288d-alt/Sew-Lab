@@ -10,9 +10,21 @@ export default function FinalCta() {
         <p className={styles.sub}>
           Tell us the run size, the timeline, and what you need decorated.
         </p>
-        <a href="tel:4242353673" className={styles.phone}>
-          424.235.3673
-        </a>
+        <div className={styles.options}>
+          <div className={styles.option}>
+            <p className={styles.optionLabel}>Need Rush Quote</p>
+            <a href="tel:4242353673" className={styles.contact}>
+              424.235.3673
+            </a>
+          </div>
+          <div className={styles.divider} />
+          <div className={styles.option}>
+            <p className={styles.optionLabel}>Contact Us</p>
+            <a href="mailto:orders@sew-lab.com" className={styles.contact}>
+              orders@sew-lab.com
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -20,7 +20,8 @@
 
 .navLinks {
   display: none;
-  gap: 28px;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font-geist-mono), monospace;
   font-size: 13px;
   letter-spacing: 0.04em;
@@ -30,6 +31,23 @@
 @media (min-width: 860px) {
   .navLinks {
     display: flex;
+  }
+}
+
+.navLinks a {
+  padding: 6px 10px;
+  /* Transparent border reserves the same space the hover state uses, so
+     nothing shifts when it becomes visible — clean text by default, an
+     outline box appears only on hover, and disappears cleanly on mouse-out. */
+  border: 1px solid transparent;
+  border-radius: 2px;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .navLinks a:hover {
+    color: var(--foreground);
+    border-color: var(--foreground);
   }
 }
 

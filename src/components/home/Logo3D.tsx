@@ -1,6 +1,6 @@
 import styles from "./Logo3D.module.css";
 
-const FRONT_TEXT = "SEW-LAB";
+const TEXT = "SEW-LAB";
 // Depth slices between the front and back face — each one is a full copy of
 // the wordmark, offset along the Z axis and shaded darker with distance, so
 // the stack reads as an extruded/beveled edge rather than flat text.
@@ -22,18 +22,13 @@ const depths = Array.from({ length: SLICE_COUNT }, (_, i) => {
   return -CAP_Z + t * CAP_Z * 2;
 });
 
-export default function Logo3D({ backText = FRONT_TEXT }: { backText?: string }) {
-  // The rotating box has one shared width for both faces (see .sizer in the
-  // CSS module) — sized to whichever text is longer so a shorter word on
-  // either face just sits centered in it rather than overflowing.
-  const sizerText = backText.length > FRONT_TEXT.length ? backText : FRONT_TEXT;
-
+export default function Logo3D() {
   return (
     <div className={styles.stage}>
       <div className={styles.cube} aria-hidden="true">
         {/* Sizer: normal-flow, invisible — establishes the box the
             absolutely-positioned faces below are stacked into. */}
-        <span className={styles.sizer}>{sizerText}</span>
+        <span className={styles.sizer}>{TEXT}</span>
 
         {/* Front-facing edge slices — visible for roughly the front half of
             the spin (facing local +Z). */}
@@ -43,7 +38,7 @@ export default function Logo3D({ backText = FRONT_TEXT }: { backText?: string })
             className={styles.slice}
             style={{ transform: `translateZ(${z.toFixed(2)}px)`, color: colorAtDepth(z) }}
           >
-            {FRONT_TEXT}
+            {TEXT}
           </span>
         ))}
 
@@ -61,19 +56,19 @@ export default function Logo3D({ backText = FRONT_TEXT }: { backText?: string })
             className={styles.slice}
             style={{ transform: `rotateY(180deg) translateZ(${(-z).toFixed(2)}px)`, color: colorAtDepth(z) }}
           >
-            {backText}
+            {TEXT}
           </span>
         ))}
 
         <span className={styles.face} style={{ transform: `translateZ(${CAP_Z}px)` }}>
-          {FRONT_TEXT}
+          {TEXT}
         </span>
 
         <span className={styles.back} style={{ transform: `rotateY(180deg) translateZ(${CAP_Z}px)` }}>
-          <span className={styles.backInner}>{backText}</span>
+          <span className={styles.backInner}>{TEXT}</span>
         </span>
       </div>
-      <span className={styles.srOnly}>{FRONT_TEXT}</span>
+      <span className={styles.srOnly}>SEW-LAB</span>
     </div>
   );
 }

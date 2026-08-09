@@ -27,12 +27,15 @@
   pointer-events: none;
 }
 
-/* 25% larger than Logo3D's own default size, then bumped another 15% per
-   follow-up feedback (1.25 -> 1.44) — scoped to this mobile-only context
-   via a wrapper transform, rather than changing Logo3D itself (which the
-   desktop hero also uses at its own tuned size). */
+/* Scaled up in several follow-up passes (1.25 -> 1.44 -> 1.8 -> 2.16) —
+   scoped to this mobile-only context via a wrapper transform, rather than
+   changing Logo3D itself (which the desktop hero also uses at its own tuned
+   size). translateY nudges it down: Logo3D's own .stage has a 28px
+   margin-bottom (space it reserves for content that would normally follow
+   it in the desktop hero), which was pulling the visual center of the
+   wordmark above the true center of the 4-tile grid. */
 .logoScale {
-  transform: scale(1.44);
+  transform: translateY(14px) scale(2.16);
 }
 
 .swipeHint {
