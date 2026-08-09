@@ -78,60 +78,75 @@
   display: block;
 }
 
-/* Flash variant: two flat chrome-text layers dissolving in and out in
-   sequence, rather than the spin variant's rotating 3D extrusion. One full
-   loop is 4 phases of 3.75s each — SEW-LAB dissolves away, COMING-SOON
-   dissolves in, COMING-SOON dissolves away, SEW-LAB dissolves in — so only
-   one word is ever transitioning at a time, never both crossfading at once. */
-.flashStage {
+/* Flash variant: the same extruded/beveled 3D word (fixed tilt, depth
+   slices, orange-to-black glow) as the spin variant's cube — just held
+   still instead of spinning — rendered once per word, with the two whole
+   3D blocks cross-dissolving (opacity + blur + a touch of scale) rather
+   than a flat text crossfade, so the depth and color glow survive the
+   transition. One 19s loop: SEW-LAB holds for 4s, dissolves away (3.75s),
+   COMING-SOON dissolves in (3.75s), holds, dissolves away (3.75s), SEW-LAB
+   dissolves back in (3.75s) — only one word transitions at a time. */
+.flashOuter {
+  position: relative;
   display: inline-block;
+  perspective: 1200px;
+  margin-bottom: 28px;
+}
+
+.flashSizer {
+  visibility: hidden;
+  display: block;
   font-family: var(--font-display), sans-serif;
   font-weight: 400;
   font-size: clamp(40px, 6vw, 68px);
   letter-spacing: 0.05em;
   line-height: 1;
   white-space: nowrap;
-  margin-bottom: 28px;
 }
 
-.flashCube {
-  position: relative;
-}
-
-.flashSizer {
-  visibility: hidden;
-  display: block;
-  text-align: center;
-}
-
-.flashText {
+.flashWord {
   position: absolute;
   inset: 0;
-  display: block;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
   will-change: opacity, filter, transform;
 }
 
+.flashTilt {
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateY(-22deg);
+  font-family: var(--font-display), sans-serif;
+  font-weight: 400;
+  font-size: clamp(40px, 6vw, 68px);
+  letter-spacing: 0.05em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
 .flashFront {
-  animation: flashFront 15s ease-in-out infinite;
+  animation: flashHoldFront 19s ease-in-out infinite;
 }
 
-.flashBack {
-  animation: flashBack 15s ease-in-out infinite;
+.flashBackLayer {
+  animation: flashHoldBack 19s ease-in-out infinite;
 }
 
-@keyframes flashFront {
-  0% {
+@keyframes flashHoldFront {
+  0%,
+  21.05% {
     opacity: 1;
     filter: blur(0);
     transform: scale(1);
   }
-  25% {
+  40.79% {
     opacity: 0;
     filter: blur(5px);
     transform: scale(1.05);
   }
-  75% {
+  80.26% {
     opacity: 0;
     filter: blur(5px);
     transform: scale(1.05);
@@ -143,19 +158,19 @@
   }
 }
 
-@keyframes flashBack {
+@keyframes flashHoldBack {
   0%,
-  25% {
+  40.79% {
     opacity: 0;
     filter: blur(5px);
     transform: scale(1.05);
   }
-  50% {
+  60.53% {
     opacity: 1;
     filter: blur(0);
     transform: scale(1);
   }
-  75%,
+  80.26%,
   100% {
     opacity: 0;
     filter: blur(5px);
@@ -164,13 +179,16 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .flashTilt {
+    transform: rotateY(-22deg);
+  }
   .flashFront {
     animation: none;
     opacity: 1;
     filter: blur(0);
     transform: scale(1);
   }
-  .flashBack {
+  .flashBackLayer {
     animation: none;
     opacity: 0;
   }

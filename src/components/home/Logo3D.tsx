@@ -22,6 +22,30 @@ const depths = Array.from({ length: SLICE_COUNT }, (_, i) => {
   return -CAP_Z + t * CAP_Z * 2;
 });
 
+// One word rendered as a fixed-tilt extrusion — same depth slices, same
+// front-cap chrome gradient, same colorAtDepth glow as the spin variant's
+// cube, just held at a static angle instead of rotating. Used twice by the
+// flash variant (one per word) so each can fade independently.
+function WordTilt({ text }: { text: string }) {
+  return (
+    <div className={styles.flashTilt}>
+      <span className={styles.sizer}>{text}</span>
+      {depths.map((z) => (
+        <span
+          key={z}
+          className={styles.slice}
+          style={{ transform: `translateZ(${z.toFixed(2)}px)`, color: colorAtDepth(z) }}
+        >
+          {text}
+        </span>
+      ))}
+      <span className={styles.face} style={{ transform: `translateZ(${CAP_Z}px)` }}>
+        {text}
+      </span>
+    </div>
+  );
+}
+
 export default function Logo3D({
   backText = FRONT_TEXT,
   variant = "spin",
@@ -36,11 +60,13 @@ export default function Logo3D({
 
   if (variant === "flash") {
     return (
-      <div className={styles.flashStage}>
-        <div className={styles.flashCube} aria-hidden="true">
-          <span className={styles.flashSizer}>{sizerText}</span>
-          <span className={`${styles.flashText} ${styles.face} ${styles.flashFront}`}>{FRONT_TEXT}</span>
-          <span className={`${styles.flashText} ${styles.face} ${styles.flashBack}`}>{backText}</span>
+      <div className={styles.flashOuter}>
+        <span className={styles.flashSizer}>{sizerText}</span>
+        <div className={`${styles.flashWord} ${styles.flashFront}`} aria-hidden="true">
+          <WordTilt text={FRONT_TEXT} />
+        </div>
+        <div className={`${styles.flashWord} ${styles.flashBackLayer}`} aria-hidden="true">
+          <WordTilt text={backText} />
         </div>
         <span className={styles.srOnly}>{FRONT_TEXT}</span>
       </div>
