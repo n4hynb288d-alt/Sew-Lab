@@ -6,9 +6,9 @@ import styles from "./ComingSoonBackdrop.module.css";
 
 const SCREEN_PRINT_VIDEO = "/videos/screen-print-production.mp4";
 const HERO_VIDEO = "/videos/embroidery-heads.mp4";
-const EMBROIDERY_IMAGE = {
-  src: "/images/production/09AAD566-94C2-4749-B427-D9401D18D504.JPG",
-  alt: "Embroidery machine head stitching a logo in real time",
+const SCREEN_PRINT_SCREENS_IMAGE = {
+  src: "/images/production/IMG_9717.jpeg",
+  alt: "Screen printing screens coated with red and orange ink on the production floor",
 };
 const FINISHING_IMAGE = {
   src: "/images/production/Finishing.JPG",
@@ -86,10 +86,10 @@ export default function ComingSoonBackdrop() {
 
       <div className={styles.tile}>
         <Image
-          src={EMBROIDERY_IMAGE.src}
-          alt={EMBROIDERY_IMAGE.alt}
+          src={SCREEN_PRINT_SCREENS_IMAGE.src}
+          alt={SCREEN_PRINT_SCREENS_IMAGE.alt}
           fill
-          className={`${styles.media} ${styles.mirrored}`}
+          className={styles.media}
           sizes="50vw"
         />
       </div>
