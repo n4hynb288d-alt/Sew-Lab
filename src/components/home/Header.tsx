@@ -16,7 +16,6 @@ export default function Header() {
         </a>
       </nav>
       <div className={styles.navActions}>
-        {/* Visual placeholder only — no auth wired up yet. */}
         <Link href="/login" className={styles.navLogin}>
           Login
         </Link>
