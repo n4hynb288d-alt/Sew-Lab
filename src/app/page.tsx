@@ -6,7 +6,7 @@ import ComingSoon from "@/components/home/ComingSoon";
 export default function Home() {
   return (
     <div id="top">
-      <Header />
+      <Header cycleMark />
       <main>
         <ComingSoon />
       </main>
