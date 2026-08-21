@@ -22,10 +22,16 @@ export default function LoginPage() {
         <h1 className={styles.title}>Login</h1>
         <p className={styles.body}>Choose Admin or Customer access.</p>
         <div className={styles.actions}>
-          <a href="/admin/login" className={styles.choice}>
+          <a
+            href="https://sew-lab-back-portal.vercel.app/admin/login"
+            className={styles.choice}
+          >
             Admin login
           </a>
-          <a href="/customer/login" className={styles.choice}>
+          <a
+            href="https://sew-lab-back-portal.vercel.app/customer/login"
+            className={styles.choice}
+          >
             Customer login
           </a>
         </div>
