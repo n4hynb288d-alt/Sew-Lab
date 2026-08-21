@@ -8,17 +8,3 @@
   height: calc(100svh - 75px);
   overflow: hidden;
 }
-
-.logoOverlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  padding: 0 24px;
-}
-
-.logoScale {
-  transform: scale(1.44);
-}

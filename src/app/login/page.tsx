@@ -35,7 +35,7 @@ export default function LoginPage() {
             Customer login
           </a>
         </div>
-        <Link href="/" className={styles.back}>
+        <Link href="/home" className={styles.back}>
           Back to home
         </Link>
       </div>

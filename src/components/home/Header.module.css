@@ -18,6 +18,73 @@
   letter-spacing: 0.08em;
 }
 
+/* Coming-soon homepage only (Header cycleMark): hold each word a couple of
+   seconds, then crossfade. Sized to the longer word so Login / nav don't
+   shift as the mark swaps. */
+.navMarkCycle {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.navMarkSizer {
+  visibility: hidden;
+  display: block;
+}
+
+.navMarkWord {
+  position: absolute;
+  inset: 0;
+  white-space: nowrap;
+}
+
+.navMarkFront {
+  animation: navMarkHoldFront 8s ease-in-out infinite;
+}
+
+.navMarkBack {
+  animation: navMarkHoldBack 8s ease-in-out infinite;
+}
+
+@keyframes navMarkHoldFront {
+  0%,
+  31.25% {
+    opacity: 1;
+  }
+  50%,
+  81.25% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes navMarkHoldBack {
+  0%,
+  31.25% {
+    opacity: 0;
+  }
+  50%,
+  81.25% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navMarkFront {
+    animation: none;
+    opacity: 1;
+  }
+  .navMarkBack {
+    animation: none;
+    opacity: 0;
+  }
+}
+
 .navLinks {
   display: none;
   gap: 28px;
