@@ -20,7 +20,7 @@ export default function LoginPage() {
       <div className={styles.card}>
         <p className={styles.eyebrow}>SEW-LAB Accounts</p>
         <h1 className={styles.title}>Login</h1>
-        <p className={styles.body}>Choose Admin or Customer access.</p>
+        <p className={styles.body}>Quality. Consistency. Customer Service.</p>
         <div className={styles.actions}>
           <a
             href="https://sew-lab-back-portal.vercel.app/admin/login"
