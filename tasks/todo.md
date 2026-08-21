@@ -9,11 +9,12 @@ so the address bar stays on sew-lab.com. No fake login forms.
 
 ## Plan
 
-- [ ] Replace `/login` placeholder copy with a two-button chooser (Admin, Customer) and keep Back to home.
-- [ ] Style the new buttons with the existing dark login page / header language (CSS modules only).
-- [ ] Add `next.config.ts` afterFiles rewrites to `https://sew-lab-back-portal.vercel.app` for `/admin`, `/customer`, `/portal`, and `/api/auth`. Do not rewrite `/login`.
-- [ ] Leave Header Login pointing at `/login`. Use plain `<a href>` for portal paths so Next.js client routing does not try to load missing local pages.
-- [ ] Build to confirm TypeScript and pages still compile.
+- [x] Replace `/login` placeholder copy with a two-button chooser (Admin, Customer) and keep Back to home.
+- [x] Style the new buttons with the existing dark login page / header language (CSS modules only).
+- [x] Add `next.config.ts` afterFiles rewrites to `https://sew-lab-back-portal.vercel.app` for `/admin`, `/customer`, `/portal`, and `/api/auth`. Do not rewrite `/login`.
+- [x] Leave Header Login pointing at `/login`. Use plain `<a href>` for portal paths so Next.js client routing does not try to load missing local pages.
+- [x] Build to confirm TypeScript and pages still compile.
+- [x] Add a looping full-bleed background video on `/login` at `/admin_customer_login_video.mov`, with a dark overlay. Keep the chooser card. Do not add a fake login form.
 
 ## Review
 
@@ -40,3 +41,11 @@ Verified with `next build` + `next start`:
 - `GET /admin/login` → 200 rewrite, URL stays same-origin, portal admin form
 - `GET /customer/login` → rewrite stays same-origin; portal currently 404s that
   path (expected until the sibling portal PR lands `/customer/login`)
+
+Chooser `/login` now has a full-bleed looping video at
+`/admin_customer_login_video.mov` (`autoPlay` `muted` `loop` `playsInline`,
+no controls, `aria-hidden`) plus a dark overlay. The existing dark page
+background remains the fallback if the file is missing or cannot play.
+The 25MB QuickTime was not available in this environment — the page is
+wired to `public/admin_customer_login_video.mov` so it can be added on
+this same branch.
