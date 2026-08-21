@@ -1,15 +1,7 @@
-import Header from "@/components/home/Header";
-import ComingSoon from "@/components/home/ComingSoon";
+import { redirect } from "next/navigation";
 
-// Temporary front door while the full build (still complete and reviewable
-// at /preview) isn't ready to launch yet.
-export default function Home() {
-  return (
-    <div id="top">
-      <Header cycleMark />
-      <main>
-        <ComingSoon />
-      </main>
-    </div>
-  );
+// Public front door is the login chooser. The coming-soon landing lives at
+// /home and is only linked from Login → Back to home.
+export default function Root() {
+  redirect("/login");
 }

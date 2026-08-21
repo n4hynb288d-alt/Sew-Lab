@@ -13,9 +13,10 @@ import ClientCredibility from "@/components/home/ClientCredibility";
 import WorkGallery from "@/components/home/WorkGallery";
 import FinalCta from "@/components/home/FinalCta";
 
-// The real homepage, parked here while "/" shows the coming-soon page
-// (see src/app/page.tsx). Not linked from anywhere public — lets work on
-// the full build continue and stay reviewable ahead of launch.
+// The real homepage, parked here while /home shows the coming-soon page
+// and "/" sends visitors to the login chooser. Not linked from anywhere
+// public — lets work on the full build continue and stay reviewable
+// ahead of launch.
 export default function Preview() {
   return (
     <div id="top">
