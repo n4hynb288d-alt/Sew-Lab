@@ -32,3 +32,11 @@ through the rewrite instead of Next.js client routing a missing local page.
 `/login` is not rewritten. No fake login forms, no new pages, no new dependencies.
 Header styles and the existing login CSS module were reused; two button classes
 were added (`.actions`, `.choice`).
+
+Verified with `next build` + `next start`:
+
+- `GET /login` → 200 marketing chooser (Admin login / Customer login / Back to home)
+- Homepage Login still `href="/login"`
+- `GET /admin/login` → 200 rewrite, URL stays same-origin, portal admin form
+- `GET /customer/login` → rewrite stays same-origin; portal currently 404s that
+  path (expected until the sibling portal PR lands `/customer/login`)
