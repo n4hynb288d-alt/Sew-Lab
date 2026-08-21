@@ -37,6 +37,31 @@
   margin: 0 0 28px;
 }
 
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0 0 28px;
+}
+
+.choice {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid #fff;
+  padding: 12px 20px;
+  border-radius: 2px;
+  display: block;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .choice:hover {
+    background: #fff;
+    color: var(--surface-dark);
+  }
+}
+
 .back {
   font-family: var(--font-geist-mono), monospace;
   font-size: 12px;
