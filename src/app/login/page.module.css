@@ -11,29 +11,58 @@
   overflow: hidden;
 }
 
-.video {
+.backdrop {
   position: absolute;
   inset: 0;
   z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--surface-dark);
+}
+
+.poster,
+.video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   pointer-events: none;
 }
 
-/* Hide the native iOS/WebKit start-playback overlay if muted autoplay
-   is delayed. Never show controls on this background clip. */
-.video::-webkit-media-controls {
-  display: none !important;
+.poster {
+  z-index: 0;
 }
 
-.video::-webkit-media-controls-start-playback-button {
-  display: none !important;
-  -webkit-appearance: none;
+.video {
+  z-index: 1;
+  transition: opacity 0.35s ease;
 }
 
+/* Hide the video (and iOS's native play overlay) until it is actually
+   playing. The poster underneath stays visible if autoplay is blocked. */
+.videoHidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.videoVisible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Hide native iOS/WebKit playback chrome. Not reliable alone on modern
+   iOS — the hidden-until-playing pattern above is the real fix. */
+.video::-webkit-media-controls,
+.video::-webkit-media-controls-panel,
+.video::-webkit-media-controls-play-button,
+.video::-webkit-media-controls-start-playback-button,
 .video::-webkit-media-controls-enclosure {
   display: none !important;
+  opacity: 0 !important;
+  -webkit-appearance: none;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
