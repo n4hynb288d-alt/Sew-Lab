@@ -21,6 +21,21 @@
   pointer-events: none;
 }
 
+/* Hide the native iOS/WebKit start-playback overlay if muted autoplay
+   is delayed. Never show controls on this background clip. */
+.video::-webkit-media-controls {
+  display: none !important;
+}
+
+.video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none;
+}
+
+.video::-webkit-media-controls-enclosure {
+  display: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .video {
     display: none;
